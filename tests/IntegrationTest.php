@@ -21,7 +21,7 @@ class IntegrationTest extends TestCase
         cache()->clear();
     }
 
-    /** @test
+    /** @test */
     public function it_can_handle_a_valid_request()
     {
         $payload = [
@@ -56,7 +56,7 @@ class IntegrationTest extends TestCase
 
         $this->assertEquals($webhookCall->id, cache('dummyjob')->id);
     }
-*/
+
     /** @test */
     public function a_request_with_an_invalid_signature_wont_be_logged()
     {
