@@ -47,7 +47,7 @@ class IntegrationTest extends TestCase
         $this->assertEquals($payload, $webhookCall->payload);
         $this->assertNull($webhookCall->exception);
 
-        Event::assertDispatched("zoom-webhooks::my.type", function ($event, $eventPayload) use ($webhookCall) {
+        Event::assertDispatched('zoom-webhooks::my.type', function ($event, $eventPayload) use ($webhookCall) {
             $this->assertInstanceOf(WebhookCall::class, $eventPayload);
             $this->assertEquals($webhookCall->id, $eventPayload->id);
 

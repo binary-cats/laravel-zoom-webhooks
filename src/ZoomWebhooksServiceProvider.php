@@ -2,7 +2,6 @@
 
 namespace BinaryCats\ZoomWebhooks;
 
-use BinaryCats\ZoomWebhooks\ZoomWebhooksController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
