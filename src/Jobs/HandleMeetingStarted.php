@@ -35,11 +35,11 @@ class HandleMeetingStarted
      */
     public function handle()
     {
-        # $this->webhookCall->payload contains the complete request payload sent from Zoom
-        # Base Spatie\WebhookClient\Models\WebhookCall model will read it into an array
-        #
-        # It is easy to confuse it with the "payload" field within the request payload.
-        # Don't confuse them.
+        // $this->webhookCall->payload contains the complete request payload sent from Zoom
+        // Base Spatie\WebhookClient\Models\WebhookCall model will read it into an array
+        //
+        // It is easy to confuse it with the "payload" field within the request payload.
+        // Don't confuse them.
         /*
         [
             'event' => 'meeting.updated',       # name of the event
@@ -58,11 +58,11 @@ class HandleMeetingStarted
             'event_ts' =>  1612046179414        # UNIX timestamp of event
         ]
         */
-        # It is hard to come up with a uniform Model that will handle differnt sttructures
-        # so what I usually do is create an abstract Job that will handle them; providing
-        # with a paylod() method, as defined below.
-        #
-        # If you never worked with Fluent, try it, I promise you, you will love it.
+        // It is hard to come up with a uniform Model that will handle differnt sttructures
+        // so what I usually do is create an abstract Job that will handle them; providing
+        // with a paylod() method, as defined below.
+        //
+        // If you never worked with Fluent, try it, I promise you, you will love it.
     }
 
     /**
