@@ -1,14 +1,14 @@
 # Handle Zoom Webhooks in a Laravel application
 
 ![https://github.com/binary-cats/laravel-zoom-webhooks/actions](https://github.com/binary-cats/laravel-zoom-webhooks/workflows/Laravel/badge.svg)
-![https://github.styleci.io/repos/](https://github.styleci.io/repos//shield)
+![https://github.styleci.io/repos/](https://github.styleci.io/repos/334547227/shield)
 ![https://scrutinizer-ci.com/g/binary-cats/laravel-zoom-webhooks/](https://scrutinizer-ci.com/g/binary-cats/laravel-zoom-webhooks/badges/quality-score.png?b=master)
 
 [Zoom](https://zoom.us) can notify your application of various events using webhooks. This package can help you handle those webhooks. Out of the box it will verify Zoom webhook signature of incoming requests. All valid calls will be logged to the database. You can easily define jobs or events that should be dispatched when specific events hit your app.
 
 This package will not handle what should be done *after* the webhook request has been validated and the right job or event is called. You should still code up any work (eg. what should happen) yourself. For more, read on.
 
-<p align="center"><img src="" width="400"></p>
+<p align="center"><img src="https://repository-images.githubusercontent.com/334547227/82dc7c80-6330-11eb-8640-34b9611ab14e" width="400"></p>
 
 
 Before using this package we highly recommend reading [the entire documentation on webhooks over at Zoom](https://marketplace.zoom.us/docs/api-reference/webhook-reference).
