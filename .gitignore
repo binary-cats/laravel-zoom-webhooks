@@ -3,4 +3,6 @@ composer.lock
 docs
 vendor
 coverage.clover
+.idea
 .phpunit.result
+.phpunit.result.cache

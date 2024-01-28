@@ -12,24 +12,17 @@ class HandleMeetingStarted
     use Dispatchable, SerializesModels;
 
     /**
-     * Bind the implementation.
+     * Create new Handle Meeting Started job.
      *
-     * @var Spatie\WebhookClient\Models\WebhookCall
+     * @param \Spatie\WebhookClient\Models\WebhookCall $webhookCall
      */
-    protected $webhookCall;
-
-    /**
-     * Create new Job.
-     *
-     * @param Spatie\WebhookClient\Models\WebhookCall $webhookCall
-     */
-    public function __construct(WebhookCall $webhookCall)
-    {
-        $this->webhookCall = $webhookCall;
+    public function __construct(
+        protected WebhookCall $webhookCall
+    ) {
     }
 
     /**
-     * Execute the job.
+     * Execute the Handle Meeting Started job.
      *
      * @return void
      */
@@ -66,7 +59,7 @@ class HandleMeetingStarted
     }
 
     /**
-     * @return Illuminate\Support\Fluent
+     * @return \Illuminate\Support\Fluent
      */
     protected function payload(): Fluent
     {

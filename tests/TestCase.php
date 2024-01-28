@@ -3,14 +3,14 @@
 namespace BinaryCats\ZoomWebhooks\Tests;
 
 use BinaryCats\ZoomWebhooks\ZoomWebhooksServiceProvider;
-use CreateWebhookCallsTable;
-use Exception;
+use Throwable;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Exceptions\Handler;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
+    /** @return void */
     public function setUp(): void
     {
         parent::setUp();
@@ -25,8 +25,8 @@ abstract class TestCase extends OrchestraTestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', [
+        config()->set('database.default', 'sqlite');
+        config()->set('database.connections.sqlite', [
             'driver'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => '',
@@ -37,9 +37,9 @@ abstract class TestCase extends OrchestraTestCase
 
     protected function setUpDatabase()
     {
-        include_once __DIR__.'/../vendor/spatie/laravel-webhook-client/database/migrations/create_webhook_calls_table.php.stub';
+        $migration = include __DIR__.'/../vendor/spatie/laravel-webhook-client/database/migrations/create_webhook_calls_table.php.stub';
 
-        (new CreateWebhookCallsTable())->up();
+        $migration->up();
     }
 
     /**
@@ -61,11 +61,11 @@ abstract class TestCase extends OrchestraTestCase
             {
             }
 
-            public function report(Exception $e)
+            public function report(Throwable $e)
             {
             }
 
-            public function render($request, Exception $exception)
+            public function render($request, Throwable $exception)
             {
                 throw $exception;
             }

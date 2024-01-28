@@ -7,26 +7,19 @@ use BinaryCats\ZoomWebhooks\Contracts\WebhookEvent;
 class Event implements WebhookEvent
 {
     /**
-     * Attributes from the event.
-     *
-     * @var array
-     */
-    public $attributes = [];
-
-    /**
      * Create new Event.
      *
-     * @param array $attributes
+     * @param array $attributes Attributes from the event
      */
-    public function __construct($attributes)
-    {
-        $this->attributes = $attributes;
+    public function __construct(
+        public array $attributes
+    ) {
     }
 
     /**
-     * Construct the event.
+     * Construct the event statically from array.
      *
-     * @return Event
+     * @return static
      */
     public static function constructFrom($data): self
     {

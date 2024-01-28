@@ -4,7 +4,7 @@ namespace BinaryCats\ZoomWebhooks;
 
 use BinaryCats\ZoomWebhooks\Exceptions\WebhookFailed;
 use Illuminate\Support\Arr;
-use Spatie\WebhookClient\ProcessWebhookJob;
+use Spatie\WebhookClient\Jobs\ProcessWebhookJob;
 
 class ProcessZoomWebhookJob extends ProcessWebhookJob
 {
@@ -13,7 +13,7 @@ class ProcessZoomWebhookJob extends ProcessWebhookJob
      *
      * @var string
      */
-    protected $key = 'payload.event';
+    protected string $key = 'payload.event';
 
     /**
      * Handle the process.
@@ -24,9 +24,7 @@ class ProcessZoomWebhookJob extends ProcessWebhookJob
     {
         $type = Arr::get($this->webhookCall, $this->key);
 
-        if (! $type) {
-            throw WebhookFailed::missingType($this->webhookCall);
-        }
+        throw_if(! $type, WebhookFailed::missingType($this->webhookCall));
 
         event("zoom-webhooks::{$type}", $this->webhookCall);
 
@@ -36,9 +34,7 @@ class ProcessZoomWebhookJob extends ProcessWebhookJob
             return;
         }
 
-        if (! class_exists($jobClass)) {
-            throw WebhookFailed::jobClassDoesNotExist($jobClass, $this->webhookCall);
-        }
+        throw_if(! class_exists($jobClass), WebhookFailed::jobClassDoesNotExist($jobClass, $this->webhookCall));
 
         dispatch(new $jobClass($this->webhookCall));
     }

@@ -10,25 +10,10 @@ use Spatie\WebhookClient\WebhookConfig;
 class ZoomSignatureValidator implements SignatureValidator
 {
     /**
-     * Bind the implemetation.
+     * True if the signature has been validated.
      *
-     * @var Illuminate\Http\Request
-     */
-    protected $request;
-
-    /**
-     * Inject the config.
-     *
-     * @var Spatie\WebhookClient\WebhookConfig
-     */
-    protected $config;
-
-    /**
-     * True if the signature has been valiates.
-     *
-     * @param  Illuminate\Http\Request       $request
-     * @param  Spatie\WebhookClient\WebhookConfig $config
-     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Spatie\WebhookClient\WebhookConfig $config
      * @return bool
      */
     public function isValid(Request $request, WebhookConfig $config): bool
