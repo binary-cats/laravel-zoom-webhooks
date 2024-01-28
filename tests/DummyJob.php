@@ -9,7 +9,7 @@ class DummyJob
     /**
      * Create new Dummy Job.
      *
-     * @param \Spatie\WebhookClient\Models\WebhookCall $webhookCall
+     * @param  \Spatie\WebhookClient\Models\WebhookCall  $webhookCall
      */
     public function __construct(
         public WebhookCall $webhookCall

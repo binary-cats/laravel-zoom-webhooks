@@ -16,8 +16,8 @@ class WebhookFailed extends Exception
     }
 
     /**
-     * @param string $jobClass
-     * @param \Spatie\WebhookClient\Models\WebhookCall $webhookCall
+     * @param  string  $jobClass
+     * @param  \Spatie\WebhookClient\Models\WebhookCall  $webhookCall
      * @return static
      */
     public static function jobClassDoesNotExist(string $jobClass, WebhookCall $webhookCall): self
@@ -26,7 +26,7 @@ class WebhookFailed extends Exception
     }
 
     /**
-     * @param \Spatie\WebhookClient\Models\WebhookCall $webhookCall
+     * @param  \Spatie\WebhookClient\Models\WebhookCall  $webhookCall
      * @return static
      */
     public static function missingType(WebhookCall $webhookCall): self

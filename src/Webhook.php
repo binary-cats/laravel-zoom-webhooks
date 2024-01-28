@@ -9,9 +9,9 @@ class Webhook
     /**
      * Validate and raise an appropriate event.
      *
-     * @param  array $payload
-     * @param  string $signature
-     * @param  string $secret
+     * @param  array  $payload
+     * @param  string  $signature
+     * @param  string  $secret
      * @return \BinaryCats\ZoomWebhooks\Event
      */
     public static function constructEvent(array $payload, string $signature, string $secret): Event
@@ -23,6 +23,7 @@ class Webhook
                 new UnexpectedValueException('Failed to verify signature', 500)
             );
         });
+
         // Make an event
         return Event::constructFrom($payload);
     }

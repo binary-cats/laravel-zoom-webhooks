@@ -12,8 +12,8 @@ class ZoomSignatureValidator implements SignatureValidator
     /**
      * True if the signature has been validated.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Spatie\WebhookClient\WebhookConfig $config
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Spatie\WebhookClient\WebhookConfig  $config
      * @return bool
      */
     public function isValid(Request $request, WebhookConfig $config): bool
