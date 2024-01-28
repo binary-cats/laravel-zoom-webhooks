@@ -9,7 +9,7 @@ class Event implements WebhookEvent
     /**
      * Create new Event.
      *
-     * @param array $attributes Attributes from the event
+     * @param  array  $attributes  Attributes from the event
      */
     public function __construct(
         public array $attributes

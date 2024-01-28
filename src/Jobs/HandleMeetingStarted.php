@@ -14,7 +14,7 @@ class HandleMeetingStarted
     /**
      * Create new Handle Meeting Started job.
      *
-     * @param \Spatie\WebhookClient\Models\WebhookCall $webhookCall
+     * @param  \Spatie\WebhookClient\Models\WebhookCall  $webhookCall
      */
     public function __construct(
         protected WebhookCall $webhookCall

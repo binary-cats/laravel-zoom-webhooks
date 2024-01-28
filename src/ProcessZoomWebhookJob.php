@@ -42,7 +42,7 @@ class ProcessZoomWebhookJob extends ProcessWebhookJob
     /**
      * Calculate the class name.
      *
-     * @param  string $eventType
+     * @param  string  $eventType
      * @return string
      */
     protected function determineJobClass(string $eventType): string

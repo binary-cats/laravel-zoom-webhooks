@@ -3,10 +3,10 @@
 namespace BinaryCats\ZoomWebhooks\Tests;
 
 use BinaryCats\ZoomWebhooks\ZoomWebhooksServiceProvider;
-use Throwable;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Exceptions\Handler;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
+use Throwable;
 
 abstract class TestCase extends OrchestraTestCase
 {
@@ -21,15 +21,15 @@ abstract class TestCase extends OrchestraTestCase
     /**
      * Set up the environment.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param  \Illuminate\Foundation\Application  $app
      */
     protected function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'sqlite');
         config()->set('database.connections.sqlite', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
 
         config(['zoom-webhooks.signing_secret' => 'test_signing_secret']);
@@ -43,8 +43,7 @@ abstract class TestCase extends OrchestraTestCase
     }
 
     /**
-     * @param \Illuminate\Foundation\Application $app
-     *
+     * @param  \Illuminate\Foundation\Application  $app
      * @return array
      */
     protected function getPackageProviders($app)
@@ -56,7 +55,8 @@ abstract class TestCase extends OrchestraTestCase
 
     protected function disableExceptionHandling()
     {
-        $this->app->instance(ExceptionHandler::class, new class extends Handler {
+        $this->app->instance(ExceptionHandler::class, new class extends Handler
+        {
             public function __construct()
             {
             }

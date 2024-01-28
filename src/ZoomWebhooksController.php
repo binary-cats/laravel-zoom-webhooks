@@ -12,9 +12,10 @@ class ZoomWebhooksController
     /**
      * Invoke controller method.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param string|null $configKey
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string|null  $configKey
      * @return \Illuminate\Http\JsonResponse
+     *
      * @throws \Spatie\WebhookClient\Exceptions\InvalidConfig
      */
     public function __invoke(Request $request, string $configKey = null)

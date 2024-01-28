@@ -7,8 +7,8 @@ class WebhookSignature
     /**
      * Create new Signature.
      *
-     * @param string  $signature Authentication signature
-     * @param string $secret Signature secret
+     * @param  string  $signature  Authentication signature
+     * @param  string  $secret  Signature secret
      */
     public function __construct(
         protected string $signature,
@@ -20,7 +20,7 @@ class WebhookSignature
      * Static accessor into the class constructor.
      *
      * @param  string  $signature
-     * @param  string $secret
+     * @param  string  $secret
      * @return WebhookSignature static
      */
     public static function make(string $signature, string $secret)
