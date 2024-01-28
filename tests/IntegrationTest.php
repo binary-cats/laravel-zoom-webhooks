@@ -8,6 +8,7 @@ use Spatie\WebhookClient\Models\WebhookCall;
 
 class IntegrationTest extends TestCase
 {
+    /** @return void */
     public function setUp(): void
     {
         parent::setUp();

@@ -5,36 +5,22 @@ namespace BinaryCats\ZoomWebhooks;
 class WebhookSignature
 {
     /**
-     * AuthorixationAuthorixation signature.
-     *
-     * @var string
-     */
-    protected $signature;
-
-    /**
-     * Signature secret.
-     *
-     * @var string
-     */
-    protected $secret;
-
-    /**
      * Create new Signature.
      *
-     * @param string  $signature
-     * @param string $secret
+     * @param  string  $signature  Authentication signature
+     * @param  string  $secret  Signature secret
      */
-    public function __construct(string $signature, string $secret)
-    {
-        $this->signature = $signature;
-        $this->secret = $secret;
+    public function __construct(
+        protected string $signature,
+        protected string $secret
+    ) {
     }
 
     /**
-     * Statis accessor into the class constructor.
+     * Static accessor into the class constructor.
      *
      * @param  string  $signature
-     * @param  string $secret
+     * @param  string  $secret
      * @return WebhookSignature static
      */
     public static function make(string $signature, string $secret)

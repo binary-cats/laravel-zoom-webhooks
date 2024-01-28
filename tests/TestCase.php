@@ -3,14 +3,14 @@
 namespace BinaryCats\ZoomWebhooks\Tests;
 
 use BinaryCats\ZoomWebhooks\ZoomWebhooksServiceProvider;
-use CreateWebhookCallsTable;
-use Exception;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Exceptions\Handler;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
+use Throwable;
 
 abstract class TestCase extends OrchestraTestCase
 {
+    /** @return void */
     public function setUp(): void
     {
         parent::setUp();
@@ -21,15 +21,15 @@ abstract class TestCase extends OrchestraTestCase
     /**
      * Set up the environment.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param  \Illuminate\Foundation\Application  $app
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', [
-            'driver'   => 'sqlite',
+        config()->set('database.default', 'sqlite');
+        config()->set('database.connections.sqlite', [
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
 
         config(['zoom-webhooks.signing_secret' => 'test_signing_secret']);
@@ -37,14 +37,13 @@ abstract class TestCase extends OrchestraTestCase
 
     protected function setUpDatabase()
     {
-        include_once __DIR__.'/../vendor/spatie/laravel-webhook-client/database/migrations/create_webhook_calls_table.php.stub';
+        $migration = include __DIR__.'/../vendor/spatie/laravel-webhook-client/database/migrations/create_webhook_calls_table.php.stub';
 
-        (new CreateWebhookCallsTable())->up();
+        $migration->up();
     }
 
     /**
-     * @param \Illuminate\Foundation\Application $app
-     *
+     * @param  \Illuminate\Foundation\Application  $app
      * @return array
      */
     protected function getPackageProviders($app)
@@ -56,16 +55,17 @@ abstract class TestCase extends OrchestraTestCase
 
     protected function disableExceptionHandling()
     {
-        $this->app->instance(ExceptionHandler::class, new class extends Handler {
+        $this->app->instance(ExceptionHandler::class, new class extends Handler
+        {
             public function __construct()
             {
             }
 
-            public function report(Exception $e)
+            public function report(Throwable $e)
             {
             }
 
-            public function render($request, Exception $exception)
+            public function render($request, Throwable $exception)
             {
                 throw $exception;
             }
