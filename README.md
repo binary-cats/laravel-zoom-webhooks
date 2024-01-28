@@ -93,7 +93,7 @@ php artisan migrate
 ### Routing
 Finally, take care of the routing: At [the Markerplace dashboard](https://marketplace.zoom.us/user/build) you must configure at what url Zoom webhooks should hit your app. In the routes file of your app you must pass that route to `Route::zoomWebhooks()`:
 
-I *personally* like to group functionality by domain, so I would suggest `webhooks/zoom` (especially if you plan to have more webhooks), but it is your app, and it is up to you.
+I *personally* like to group webhooks functionality by calling domain, so I would suggest `webhooks/zoom` (especially if you plan to have more webhooks), but it is your app, and it is up to you.
 
 ```php
 # routes\web.php
