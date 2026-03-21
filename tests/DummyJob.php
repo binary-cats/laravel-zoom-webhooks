@@ -6,11 +6,6 @@ use Spatie\WebhookClient\Models\WebhookCall;
 
 class DummyJob
 {
-    /**
-     * Create new Dummy Job.
-     *
-     * @param  \Spatie\WebhookClient\Models\WebhookCall  $webhookCall
-     */
     public function __construct(
         public WebhookCall $webhookCall
     ) {
@@ -18,10 +13,8 @@ class DummyJob
 
     /**
      * Handle the Dummy job.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): vpid
     {
         cache()->put('dummyjob', $this->webhookCall);
     }
