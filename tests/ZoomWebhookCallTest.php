@@ -4,8 +4,8 @@ namespace BinaryCats\ZoomWebhooks\Tests;
 
 use BinaryCats\ZoomWebhooks\ProcessZoomWebhookJob;
 use Illuminate\Support\Facades\Event;
-use Spatie\WebhookClient\Models\WebhookCall;
 use PHPUnit\Framework\Attributes\Test;
+use Spatie\WebhookClient\Models\WebhookCall;
 
 class ZoomWebhookCallTest extends TestCase
 {

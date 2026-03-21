@@ -18,7 +18,7 @@ class ZoomWebhooksController
      *
      * @throws \Spatie\WebhookClient\Exceptions\InvalidConfig
      */
-    public function __invoke(Request $request, string $configKey = null)
+    public function __invoke(Request $request, ?string $configKey = null)
     {
         $webhookConfig = new WebhookConfig([
             'name' => 'zoom',
