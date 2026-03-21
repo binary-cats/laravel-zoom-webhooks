@@ -2,7 +2,6 @@
 
 ![https://github.com/binary-cats/laravel-zoom-webhooks/actions](https://github.com/binary-cats/laravel-zoom-webhooks/workflows/run-tests/badge.svg)
 ![https://github.styleci.io/repos/](https://github.styleci.io/repos/334547227/shield)
-![https://scrutinizer-ci.com/g/binary-cats/laravel-zoom-webhooks/](https://scrutinizer-ci.com/g/binary-cats/laravel-zoom-webhooks/badges/quality-score.png?b=master)
 
 [Zoom](https://zoom.us) can notify your application of various events using webhooks. 
 This package can help you handle those webhooks. Out of the box it will verify Zoom webhook signature of incoming requests. 
