@@ -14,7 +14,7 @@ class DummyJob
     /**
      * Handle the Dummy job.
      */
-    public function handle(): vpid
+    public function handle(): void
     {
         cache()->put('dummyjob', $this->webhookCall);
     }
