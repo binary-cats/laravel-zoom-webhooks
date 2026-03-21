@@ -4,6 +4,7 @@ namespace BinaryCats\ZoomWebhooks\Tests;
 
 use BinaryCats\ZoomWebhooks\ProcessZoomWebhookJob;
 use Illuminate\Support\Facades\Event;
+use PHPUnit\Framework\Attributes\Test;
 use Spatie\WebhookClient\Models\WebhookCall;
 
 class ZoomWebhookCallTest extends TestCase
@@ -15,7 +16,7 @@ class ZoomWebhookCallTest extends TestCase
     public $webhookCall;
 
     /** @return void */
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -37,16 +38,16 @@ class ZoomWebhookCallTest extends TestCase
         $this->processZoomWebhookJob = new ProcessZoomWebhookJob($this->webhookCall);
     }
 
-    /** @test */
-    public function it_will_fire_off_the_configured_job()
+    #[Test]
+    public function it_will_fire_off_the_configured_job(): void
     {
         $this->processZoomWebhookJob->handle();
 
         $this->assertEquals($this->webhookCall->id, cache('dummyjob')->id);
     }
 
-    /** @test */
-    public function it_will_not_dispatch_a_job_for_another_type()
+    #[Test]
+    public function it_will_not_dispatch_a_job_for_another_type(): void
     {
         config(['zoom-webhooks.jobs' => ['another_type' => DummyJob::class]]);
 
@@ -55,8 +56,8 @@ class ZoomWebhookCallTest extends TestCase
         $this->assertNull(cache('dummyjob'));
     }
 
-    /** @test */
-    public function it_will_not_dispatch_jobs_when_no_jobs_are_configured()
+    #[Test]
+    public function it_will_not_dispatch_jobs_when_no_jobs_are_configured(): void
     {
         config(['zoom-webhooks.jobs' => []]);
 
@@ -65,8 +66,8 @@ class ZoomWebhookCallTest extends TestCase
         $this->assertNull(cache('dummyjob'));
     }
 
-    /** @test */
-    public function it_will_dispatch_events_even_when_no_corresponding_job_is_configured()
+    #[Test]
+    public function it_will_dispatch_events_even_when_no_corresponding_job_is_configured(): void
     {
         config(['zoom-webhooks.jobs' => ['another_type' => DummyJob::class]]);
 

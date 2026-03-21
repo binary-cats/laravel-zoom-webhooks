@@ -31,7 +31,7 @@ class WebhookFailed extends Exception
      */
     public static function missingType(WebhookCall $webhookCall): self
     {
-        return new static("Webhook call id `{$webhookCall->id}` did not contain a type. Valid Zoom webhook calls should always contain a type.");
+        return new static("Webhook call id `{$webhookCall->id}` did not contain a type. Valid Zoom webhook calls should always contain a type.", 400);
     }
 
     /**
@@ -40,6 +40,6 @@ class WebhookFailed extends Exception
      */
     public function render($request)
     {
-        return response(['error' => $this->getMessage()], 400);
+        return response(['error' => $this->getMessage()], $this->getCode());
     }
 }

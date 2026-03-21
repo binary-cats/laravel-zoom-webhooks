@@ -10,8 +10,7 @@ use Throwable;
 
 abstract class TestCase extends OrchestraTestCase
 {
-    /** @return void */
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -23,7 +22,7 @@ abstract class TestCase extends OrchestraTestCase
      *
      * @param  \Illuminate\Foundation\Application  $app
      */
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         config()->set('database.default', 'sqlite');
         config()->set('database.connections.sqlite', [
@@ -35,7 +34,7 @@ abstract class TestCase extends OrchestraTestCase
         config(['zoom-webhooks.signing_secret' => 'test_signing_secret']);
     }
 
-    protected function setUpDatabase()
+    protected function setUpDatabase(): void
     {
         $migration = include __DIR__.'/../vendor/spatie/laravel-webhook-client/database/migrations/create_webhook_calls_table.php.stub';
 
@@ -44,16 +43,15 @@ abstract class TestCase extends OrchestraTestCase
 
     /**
      * @param  \Illuminate\Foundation\Application  $app
-     * @return array
      */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             ZoomWebhooksServiceProvider::class,
         ];
     }
 
-    protected function disableExceptionHandling()
+    protected function disableExceptionHandling(): void
     {
         $this->app->instance(ExceptionHandler::class, new class extends Handler
         {
@@ -72,7 +70,7 @@ abstract class TestCase extends OrchestraTestCase
         });
     }
 
-    protected function determineZoomSignature(string $configKey = null): string
+    protected function determineZoomSignature(?string $configKey = null): string
     {
         return ($configKey) ?
             config("zoom-webhooks.signing_secret_{$configKey}") :
